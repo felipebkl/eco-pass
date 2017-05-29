@@ -21,9 +21,10 @@
     }
 
     .tennis-draw {
+        font-family: Arial;
         font-size: 12px;
-        width: 15%;
-        height: -100%;
+        width: 20%;
+        height: 60px;
 
     }
 
@@ -31,24 +32,25 @@
         height: 38px;
     }
 
-    .tennis-draw.winner:hover {
-        background: url('trophy.png') right 0 no-repeat;
-    }
+
 
     .tennis-draw.winner .node-name {
-        padding-left: 10px;
-        margin-top: 1px;
+        padding-left: 30px;
+        margin-top: 0px;
         display: block;
     }
 
     .tennis-draw .node-name {
-        padding: 2px;
+        padding-left: 25px;
+        margin-top: 13px;
         white-space: pre;
-        color: #00AFF0;
+        color: navy;
     }
 
     .tennis-draw .node-desc {
-        padding: 1px;
+
+        margin-top: -1px;
+        padding-left: 25px;
         color: #999;
     }
 
@@ -56,11 +58,11 @@
     .tennis-draw.first-draw .node-name,
     .tennis-draw.first-draw img {
         position: absolute;
-        top: -8px;
+        top: 8px;
     }
 
     .tennis-draw.first-draw:hover img {
-        width: 20px;
+        width: 120px;
         top: -12px;
     }
 
@@ -88,14 +90,15 @@
     }
 
 
+
 </style>
 @extends('layouts.app')
 @section('content')
 
-
     <div class="w3-main" style="margin-left:220px;margin-top:45px;">
+        @foreach($passarosel as $passaro)
         <header class="w3-container" style="padding-top:15px">
-            <h1><b> Trinca Ferro</b></h1>
+            <h1><b> {{$passaro->nomePopular}}</b></h1>
         </header>
 
         <!-- Page Container -->
@@ -105,7 +108,7 @@
             <div class="w3-row-padding">
 
                 <!-- Left Column -->
-                <div class="w3-third">
+                <div class="w3-quarter">
 
 
                     <div class="w3-white w3-text-grey w3-card-4">
@@ -114,19 +117,31 @@
                                  style="width:100%" alt="Avatar">
                         </div>
                         <div class="w3-container" style="padding-top:15px">
-                            <p><i class="fa fa-heartbeat fa-fw w3-margin-right w3-large w3-text-teal"></i></p>
-                            <p><i class="fa fa-venus-mars  fa-fw w3-margin-right w3-large w3-text-teal"></i>df</p>
-                            <p><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>25/10/16</p>
-                            <p><i class="fa fa-address-card-o fa-fw w3-margin-right w3-large w3-text-teal"></i>PRA 023
-                                2,5</p>
+                            <p>
+                                <i class="fa fa-heartbeat fa-fw w3-margin-right w3-large w3-text-teal"></i>{{$passaro->nome}}
+                            </p>
+                            <p>
+                                <i class="fa fa-venus-mars  fa-fw w3-margin-right w3-large w3-text-teal"></i>{{$passaro->sexo}}
+                            </p>
+                            <p>
+                                <i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>{{$passaro->dataNasc}}
+                            </p>
+                            <p>
+                                <i class="fa fa-address-card-o fa-fw w3-margin-right w3-large w3-text-teal"></i>{{$passaro->anilha}}
+                            </p>
                             <hr>
 
                             <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Observações</b>
                             </p>
-
-                            <div class="w3-light-grey w3-round-xlarge w3-small">
-                                isjdoasijdoaisdjaoisdjaoisjdsaiojdoiasjdoiasjdak
+                            <div class="w3-container">
+                                <p align="justify">Nunca é demais lembrar o peso e o significado destes problemas, uma
+                                    vez que a mobilidade dos capitais internacionais aponta para a melhoria das diversas
+                                    correntes de pensamento. O incentivo ao avanço tecnológico, assim como a expansão
+                                    dos mercados mundiais exige a precisão e a definição das formas de ação. Assim
+                                    mesmo, a determinação clara de objetivos acarreta um processo de reformulação e
+                                    modernização de alternativas às soluções ortodoxas. </p>
                             </div>
+
 
                             <br>
                         </div>
@@ -136,21 +151,22 @@
                     <!-- End Left Column -->
                 </div>
 
+
                 <!-- Right Column -->
-                <div class="w3-twothird">
+                <div class="w3-threequarter">
 
                     <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
 
                         <h2 class="w3-text-grey w3-padding-16"><i
                                     class="fa fa-tree fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Árvore
-                            Genealógica</h2>
+                            Genealógica </h2>
 
                         <div class="w3-container" style="display: block">
                             <div class="w3-row-padding" style=" height: auto">
-                                <div class="col-sm-12">
+                                <div class="w3-content">
 
 
-                                    <div class="chart" id="OrganiseChart6" style=" overflow: overlay; height: 570px"
+                                    <div class="chart" id="OrganiseChart6" style=" overflow:hidden; height: 570px"
                                          ;></div>
 
                                     <script src="{{ asset('js/example7.js') }}"></script>
@@ -164,7 +180,7 @@
                                             chart: {
                                                 container: "#OrganiseChart6",
                                                 levelSeparation: 38,
-                                                siblingSeparation: 3,
+                                                siblingSeparation: 1,
                                                 subTeeSeparation: 2,
                                                 scrollbar: "fancy",
                                                 rootOrientation: "WEST",
@@ -191,52 +207,55 @@
                                                     {
                                                         text: {
                                                             name: '<?php echo $pai->pai; ?>',
-                                                            desc: "PRA 122"
+                                                            desc: '<?php echo $pai->anilha_pai; ?>'
                                                         },
                                                         @foreach($pvos as $pvo)
                                                         children: [
                                                             {
                                                                 text: {
                                                                     name: '<?php echo $pvo->pai; ?>',
-                                                                    desc: "PRA 364"
+                                                                    desc: '<?php echo $pvo->anilha_pai; ?>'
                                                                 },
+                                                                @foreach($ppvos as $ppvo)
                                                                 children: [
                                                                     {
                                                                         text: {
-                                                                            name: "BISAVÔ",
-                                                                            desc: "PRA 542"
+                                                                            name: '<?php echo $ppvo->pai; ?>',
+                                                                            desc: '<?php echo $ppvo->anilha_pai; ?>'
                                                                         }
 
                                                                     },
                                                                     {
                                                                         text: {
-                                                                            name: "BISAVÓ",
-                                                                            desc: "PRA 372"
+                                                                            name: '<?php echo $ppvo->mae; ?>',
+                                                                            desc: '<?php echo $ppvo->anilha_mae; ?>'
                                                                         }
 
                                                                     }
-                                                                ]
+                                                                ]@endforeach
                                                             },
                                                             {
                                                                 text: {
                                                                     name: '<?php echo $pvo->mae; ?>',
-                                                                    desc: "PRA 763"
+                                                                    desc: '<?php echo $pvo->anilha_mae; ?>'
                                                                 },
+                                                                @foreach($mpvos as $mpvo)
                                                                 children: [
                                                                     {
                                                                         text: {
-                                                                            name: "BISAVÔ",
-                                                                            desc: "PRA 765"
+                                                                            name: '<?php echo $mpvo->pai; ?>',
+                                                                            desc: '<?php echo $mpvo->anilha_pai; ?>'
                                                                         }
 
                                                                     },
                                                                     {
                                                                         text: {
-                                                                            name: "BISAVÓ",
-                                                                            desc: "PRA 563"
+                                                                            name: '<?php echo $mpvo->pai; ?>',
+                                                                            desc: '<?php echo $mpvo->anilha_pai; ?>'
                                                                         }
                                                                     }
                                                                 ]
+                                                                @endforeach
                                                             }
                                                         ]
                                                         @endforeach
@@ -244,52 +263,56 @@
                                                     {
                                                         text: {
                                                             name: '<?php echo $pai->mae; ?>',
-                                                            desc: "PRA 022"
+                                                            desc: '<?php echo $pai->anilha_mae; ?>'
                                                         },
                                                         @foreach( $mvos as $mvo)
                                                         children: [
                                                             {
                                                                 text: {
                                                                     name: '<?php echo $mvo->pai; ?>',
-                                                                    desc: "PRA 332"
+                                                                    desc: '<?php echo $mvo->anilha_pai; ?>'
                                                                 },
+                                                                @foreach( $pmvos as $pmvo)
                                                                 children: [
                                                                     {
                                                                         text: {
-                                                                            name: "BISAVÔ",
-                                                                            desc: "PRA 102"
+                                                                            name: '<?php echo $pmvo->pai; ?>',
+                                                                            desc: '<?php echo $pmvo->anilha_pai; ?>'
                                                                         }
 
                                                                     },
                                                                     {
                                                                         text: {
-                                                                            name: "BISAVÓ",
-                                                                            desc: "PRA 232"
+                                                                            name: '<?php echo $pmvo->mae; ?>',
+                                                                            desc: '<?php echo $pmvo->anilha_mae; ?>'
                                                                         }
 
                                                                     }
                                                                 ]
+                                                                @endforeach
                                                             },
                                                             {
                                                                 text: {
                                                                     name: '<?php echo $mvo->mae; ?>',
-                                                                    desc: "PRA 443"
+                                                                    desc: '<?php echo $mvo->anilha_mae; ?>'
                                                                 },
+                                                                @foreach($mmvos as $mmvo)
                                                                 children: [
                                                                     {
                                                                         text: {
-                                                                            name: "BISAVÔ",
-                                                                            desc: "PRA 323"
+                                                                            name: '<?php echo $mmvo->pai; ?>',
+                                                                            desc: '<?php echo $mmvo->anilha_pai; ?>'
                                                                         }
 
                                                                     },
                                                                     {
                                                                         text: {
-                                                                            name: "BISAVÓ",
-                                                                            desc: "PRA 003"
+                                                                            name: '<?php echo $pmvo->mae; ?>',
+                                                                            desc: '<?php echo $pmvo->anilha_mae; ?>'
                                                                         }
                                                                     }
                                                                 ]
+                                                                @endforeach
                                                             }
                                                         ]
                                                         @endforeach
@@ -298,22 +321,16 @@
                                             }
                                             @endforeach
                                         };
-
-
                                         new Treant(tree_structure);
-
                                     </script>
-
                                 </div>
                             </div>
-
-
                             <!-- End Page Container -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
-
 @endsection

@@ -39,7 +39,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('passaros/salvar', 'PassarosController@salvar');
     Route::patch('passaros/{passaro}', 'PassarosController@atualizar');
     Route::delete('passaros/{passaro}', 'PassarosController@deletar');
-    Route::get('passaros/busca', 'PassarosController@buscarPassaro');
+    Route::get('passaros/{passaro}/busca', 'PassarosController@buscarPassaro');
 
 
     Route::get('/home', 'HomeController@index')->name('home');
