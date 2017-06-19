@@ -9,7 +9,12 @@ use Redirect;
 use App\Http\Controllers\Controller;
 
 class EspeciesController extends Controller
+
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $especies = Especie::get();

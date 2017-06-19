@@ -10,6 +10,10 @@ use App\Http\Controllers\Controller;
 
 class SexosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $sexos = Sexo::get();

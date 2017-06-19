@@ -154,7 +154,7 @@
                 </tr>
             </table>
             <br>
-            <button class="w3-button w3-dark-grey">More Countries  <i class="fa fa-arrow-right"></i></button>
+            <button class="w3-button w3-dark-grey">More Countries <i class="fa fa-arrow-right"></i></button>
         </div>
         <hr>
         <div class="w3-container">

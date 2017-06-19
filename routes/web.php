@@ -33,6 +33,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::patch('sexos/{sexo}', 'SexosController@atualizar');
     Route::delete('sexos/{sexo}', 'SexosController@deletar');
 //rotas do passaro
+
+
     Route::get('passaros', 'PassarosController@index');
     Route::get('passaros/novo', 'PassarosController@novo');
     Route::get('passaros/{passaro}/editar', 'PassarosController@editar');
@@ -46,3 +48,4 @@ Route::group(['middleware' => 'web'], function () {
 });
 
 
+Route::get('/home', 'HomeController@index')->name('home');

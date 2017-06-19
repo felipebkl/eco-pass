@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="w3-main" style="margin-center:0px;margin-top:160px;">
-        <div class="container">
+    div class="w3-main" style="margin-left:0px;margin-top:45px;">
+    <div class="container">
+        <div class="w3-main" style="margin-top:150px;">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-default">

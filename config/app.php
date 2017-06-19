@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -178,6 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
+        Yajra\Datatables\ButtonsServiceProvider::class
 
     ],
 
@@ -229,7 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        'Datatables' => Yajra\Datatables\Facades\Datatables::cLass,
     ],
 
 ];
